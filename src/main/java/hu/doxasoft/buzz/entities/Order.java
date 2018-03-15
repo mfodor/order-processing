@@ -22,6 +22,7 @@ public class Order {
     @Column(name = "buyer_name")
     private String buyerName;
 
+    @Email
     @NotNull
     @Column(name = "buyer_email")
     private String buyerEmail;
@@ -41,7 +42,26 @@ public class Order {
     private int postcode;
 
     @OneToMany(mappedBy = "order")
-    private List<OrderItem> items = new ArrayList<OrderItem>();
+    private List<OrderItem> items = new ArrayList<>();
+
+    public Order() {
+    }
+
+    public Order(
+            int orderId,
+            @NotNull String buyerName,
+            @Email @NotNull String buyerEmail,
+            String orderDate,
+            @NotNull String address,
+            int postcode
+    ) {
+        this.orderId = orderId;
+        this.buyerName = buyerName;
+        this.buyerEmail = buyerEmail;
+        setOrderDate(orderDate);
+        this.address = address;
+        this.postcode = postcode;
+    }
 
     public int getOrderId() {
         return orderId;

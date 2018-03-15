@@ -8,6 +8,11 @@
     <groupId>hu.doxasoft.buzz</groupId>
     <artifactId>orderprocessing</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <property />
+    </properties>
+
     <build>
         <plugins>
             <plugin>
@@ -16,6 +21,22 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <!-- Build an executable JAR -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.0.2</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <mainClass>hu.doxasoft.buzz.OrderProcessingApplication</mainClass>
+                        </manifest>
+                    </archive>
                 </configuration>
             </plugin>
         </plugins>

@@ -34,6 +34,24 @@ public class OrderItem {
     @Enumerated(EnumType.STRING)
     private OrderItemStatus status;
 
+    public OrderItem() {
+    }
+
+    public OrderItem(
+            int orderItemId,
+            double salePrice,
+            double shippingPrice,
+            @NotNull String SKU,
+            @NotNull OrderItemStatus status
+    ) {
+        this.orderItemId = orderItemId;
+        this.salePrice = salePrice;
+        this.shippingPrice = shippingPrice;
+        this.SKU = SKU;
+        this.status = status;
+        updateTotalItemPrice();
+    }
+
     public int getOrderItemId() {
         return orderItemId;
     }
