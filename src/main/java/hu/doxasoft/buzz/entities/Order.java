@@ -1,9 +1,6 @@
 package hu.doxasoft.buzz.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
@@ -13,6 +10,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
+@Table(name = "orders")
 public class Order {
     @Id
     @Column(name = "id")
@@ -93,7 +91,7 @@ public class Order {
 
     public void setOrderDate(String orderDate) {
         if (orderDate == null || orderDate.equals("")) {
-            orderDate = DateTimeFormatter.ofPattern("yyy/MM/dd").format(LocalDate.now());
+            orderDate = DateTimeFormatter.ofPattern("yyyy-MM-dd").format(LocalDate.now());
         }
         this.orderDate = orderDate;
     }

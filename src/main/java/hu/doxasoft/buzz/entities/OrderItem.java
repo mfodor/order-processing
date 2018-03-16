@@ -3,20 +3,22 @@ package hu.doxasoft.buzz.entities;
 import hu.doxasoft.buzz.enums.OrderItemStatus;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @Entity
+@Table(name = "order_items")
 public class OrderItem {
     @Id
     @Column(name = "id")
     private int orderItemId;
 
     @ManyToOne
-    @Column(name = "order_id")
     private Order order;
 
     @Column(name = "sale_price")
+    @Min(value = 1, message = "The sale price should be at least 1.0!")
     private double salePrice;
 
     @Column(name = "shipping_price")
@@ -43,9 +45,9 @@ public class OrderItem {
             double shippingPrice,
             @NotNull String SKU,
             @NotNull OrderItemStatus status
-    ) {
+    ) throws Exception {
         this.orderItemId = orderItemId;
-        this.salePrice = salePrice;
+        setSalePrice(salePrice);
         this.shippingPrice = shippingPrice;
         this.SKU = SKU;
         this.status = status;
@@ -79,7 +81,10 @@ public class OrderItem {
         return salePrice;
     }
 
-    public void setSalePrice(double salePrice) {
+    public void setSalePrice(double salePrice) throws Exception {
+        if (salePrice < 1.0) {
+            throw new Exception("The sale price should be at least 1.0!");
+        }
         this.salePrice = salePrice;
         updateTotalItemPrice();
     }

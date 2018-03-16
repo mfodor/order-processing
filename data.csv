@@ -1,4 +1,4 @@
 "LineNumber";"OrderItemId";"OrderId";"BuyerName";"BuyerEmail";"Address";"Postcode";"SalePrice";"ShippingPrice";"SKU";"Status";"OrderDate"
 1;523;142;"James Buyer";"james@email.com";"Long str. 314";42385;179.90;19.90;"SKU-11";"IN_STOCK";"2018-03-15"
 2;524;143;"Emily Woods";"ewoods@email.com";"Kossuth L. u. 14.";1942;399.90;0.0;"SKU-21";"OUT_OF_STOCK";"2018-03-11"
-3;525;142;"James Buyer";"james@email.com";"Long str. 314";42385;45.00;19.90;"SKU-12";"IN_STOCK";"2018-03-15"
+3;525;144;"Graham King";"gking@email.com";"Trafalgar sqr. 12.";32742;783.30;4.75;"SKU-31";"IN_STOCK";
